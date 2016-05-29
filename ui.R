@@ -12,19 +12,21 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Test Data"),
 
+  
+  
   # Sidebar with a slider input for number of bins
- # sidebarLayout(
+ sidebarLayout(
     sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 10,
-                  value = 5)
-    ),
-
-    # Show a plot of the generated distribution
+            numericInput('ps'
+                         , 'Minimum passing score'
+                         , 60, min = 0, max = 100
+                         )
+),
+ # Show a plot of the generated distribution
     mainPanel(
-      plotOutput("distPlot")
-    )
- # )
-))
+                h4(' The passing score is in green and the median is in purple'),
+                plotOutput("distPlot")
+                )
+     )  
+  )
+)
