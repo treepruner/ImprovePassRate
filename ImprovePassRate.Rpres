@@ -1,0 +1,72 @@
+ImprovePassRate
+========================================================
+author: treepruner
+date: 2016-05-29
+autosize: true
+
+Overview
+========================================================
+
+
+This application takes a given data set and 
+allows the user to model what happens when 
+the passing scored is changed.
+
+The default passing score is 60.
+
+
+Initial Load
+========================================================
+The following are displayed:
+
+- histogram 
+- vertical line for the mean
+- vertical line for the passing score 
+
+
+
+Histogram
+========================================================
+```{r, echo=FALSE}
+library(dplyr)
+        collegeID <- c(rep("0100",times=10), rep("0200", times=10), rep("0300", times=10))
+        studentID <- (1:30)
+        testID <- c(rep("1", times = 30)) 
+        testScore <- c(80,50,55,70,60,79,87,61,63,40,86,80,76,73,59,78,71,61,79,78,63,77,78,79,59,83,87,85,63,95)
+        testDF <-data.frame(collegeID, studentID, testID, testScore)
+        mx <- mean(testScore)
+
+```
+
+```{r, echo=FALSE}
+    hist(testScore, breaks = 7, col = 'blue', border = 'white')
+    abline(v = mx, col = 'purple', lwd = 3)
+    text(x = mx, y = 12, "Mean", col = 'purple', lwd = 3 )
+    
+    abline(v = 60, col = 'green', lwd = 3)
+    text(x = 60, y = 12, "Passing", col = 'green', lwd = 3 )        
+
+```
+
+
+
+
+Passing Grade Changed
+========================================================
+The user changes the passing score and observes changes in 
+- # passed
+- % passed
+
+
+
+Calculations
+========================================================
+```{r, echo=FALSE}
+ testDF  <-  testDF %>%   mutate(testLabel = testScore > 60 )  
+          Table <-  as.data.frame(table(testDF$testLabel))
+          names(Table) <- c('Passed', 'Count')
+          Table
+         
+```
+          PercentPassed is `r round((nrow(subset(testDF, testLabel == TRUE)) / nrow(testDF)),2) * 100`
+

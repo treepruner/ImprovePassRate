@@ -16,7 +16,7 @@ shinyServer(function(input, output) {
         collegeID <- c(rep("0100",times=10), rep("0200", times=10), rep("0300", times=10))
         studentID <- (1:30)
         testID <- c(rep("1", times = 30)) 
-        testScore <- c(80, 50, 55, 70, 60, 79, 87, 61, 63, 40, 86,80,76,73,59,78,71,61, 79,78,63,77,78,79,59,83,87,85,63,95)
+        testScore <- c(80,50,55,70,60,79,87,61,63,40,86,80,76,73,59,78,71,61,79,78,63,77,78,79,59,83,87,85,63,95)
         testDF <-data.frame(collegeID, studentID, testID, testScore)
 
     mx <- mean(testScore)

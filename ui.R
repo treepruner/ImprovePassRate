@@ -10,7 +10,7 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("What Should the Passing Grade Cut-off Be?"),
+  titlePanel("What is the % Pass when the Passing Grade Changed?"),
 
   
   
