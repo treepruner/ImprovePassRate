@@ -1,8 +1,8 @@
 
-# This is the user-interface definition of a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
+# This is the server logic for a Shiny web application for the Coursera Data Products Course.
+# The data set used is included in the server.R
+# The application displays a histogram of student grades, allows the user to determine the passing grade
+# then updates the abline on the graph and changes the # and % passing
 #
 
 library(shiny)
@@ -10,7 +10,7 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Test Data"),
+  titlePanel("What Should the Passing Grade Cut-off Be?"),
 
   
   
@@ -24,8 +24,28 @@ shinyUI(fluidPage(
 ),
  # Show a plot of the generated distribution
     mainPanel(
-                h4(' The passing score is in green and the median is in purple'),
-                plotOutput("distPlot")
+                h4('The green bar will move based on your input'),
+                plotOutput("distPlot"),
+                
+                h4('Students Counted by Pass/Fail'),
+                tableOutput("psTable"),
+                br(),
+
+                
+                
+## maked sure they are changing correctly
+##                h4('Total Students Tested'),
+##                textOutput("TotalTested"),
+##                br(),
+                
+##                h4('# Students Passed'),
+##                textOutput("Passed"),
+##                br(),
+                
+                h4('% Students Passed'),
+                textOutput("PercentPassed")
+                
+                
                 )
      )  
   )
