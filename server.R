@@ -34,7 +34,12 @@ shinyServer(function(input, output) {
     
   })
   
-## create a table and see if it changes      
+## create a table and see if it changes 
+  collegeID <- c(rep("0100",times=10), rep("0200", times=10), rep("0300", times=10))
+  studentID <- (1:30)
+  testID <- c(rep("1", times = 30)) 
+  testScore <- c(80,50,55,70,60,79,87,61,63,40,86,80,76,73,59,78,71,61,79,78,63,77,78,79,59,83,87,85,63,95)
+  testDF <-data.frame(collegeID, studentID, testID, testScore)
     output$psTable <- renderTable({
           testDF  <-  testDF %>%   mutate(testLabel = testScore > input$ps )  
           Table <-  as.data.frame(table(testDF$testLabel))
@@ -43,23 +48,19 @@ shinyServer(function(input, output) {
           ) 
 
 ## Calculate the % pass     
-## below is not changing based on user selection
-## unless I re-mutate - there must be a better way   
+## below is not changing based on user selection on my PC 
+## unless I re-mutate - there must be a better way 
+    
+## Nothing is displayed on shinyapps.io unless I repeat the entire dataset    
    
-output$TotalTested <- renderText({
-        testDF  <-  testDF %>%   mutate(testLabel = testScore > input$ps )  
-        TotalTested <- nrow(testDF)
-        return(TotalTested)             }
-)
 
-
-output$Passed <- renderText({
-        testDF  <-  testDF %>%   mutate(testLabel = testScore > input$ps )  
-        Passed <- nrow(subset(testDF, testLabel == TRUE))
-        return(Passed)             }
-)
 
 output$PercentPassed <- renderText({
+        collegeID <- c(rep("0100",times=10), rep("0200", times=10), rep("0300", times=10))
+        studentID <- (1:30)
+        testID <- c(rep("1", times = 30)) 
+        testScore <- c(80,50,55,70,60,79,87,61,63,40,86,80,76,73,59,78,71,61,79,78,63,77,78,79,59,83,87,85,63,95)
+        testDF <-data.frame(collegeID, studentID, testID, testScore)
         testDF  <-  testDF %>%   mutate(testLabel = testScore > input$ps )  
         PercentPassed <- round((nrow(subset(testDF, testLabel == TRUE)) / nrow(testDF)),2) * 100
         return(PercentPassed)             }

@@ -1,4 +1,4 @@
-ImprovePassRate
+What is the % Pass When the Passing Grade Changes?
 ========================================================
 author: treepruner
 date: 2016-05-29
@@ -6,13 +6,12 @@ autosize: true
 
 Overview
 ========================================================
-
-
-This application takes a given data set and 
-allows the user to model what happens when 
-the passing scored is changed.
+This application includes a data set of student test scores and 
+allows the user to model what happens when the passing scored is changed.
 
 The default passing score is 60.
+
+URL: https://treepruner.shinyapps.io/ImprovePassRate/
 
 
 Initial Load
@@ -21,7 +20,8 @@ The following are displayed:
 
 - histogram 
 - vertical line for the mean
-- vertical line for the passing score 
+- vertical line for the default passing score of 60
+
 
 
 

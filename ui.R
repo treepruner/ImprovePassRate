@@ -10,7 +10,7 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("What is the % Pass when the Passing Grade Changed?"),
+  titlePanel("What is the % Pass When the Passing Grade Changes?"),
 
   
   
@@ -28,6 +28,7 @@ shinyUI(fluidPage(
                 plotOutput("distPlot"),
                 
                 h4('Students Counted by Pass/Fail'),
+
                 tableOutput("psTable"),
                 br(),
 
@@ -43,6 +44,7 @@ shinyUI(fluidPage(
 ##                br(),
                 
                 h4('% Students Passed'),
+
                 textOutput("PercentPassed")
                 
                 
